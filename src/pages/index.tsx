@@ -16,7 +16,6 @@ export default function Home(): JSX.Element {
       },
     });
 
-    console.log(response.data);
     return response.data;
   };
 
@@ -51,7 +50,7 @@ export default function Home(): JSX.Element {
       <Box maxW={1120} px={20} mx="auto" my={20}>
         <CardList cards={formattedData} />
         {hasNextPage && (
-          <Button onClick={() => fetchNextPage()}>
+          <Button onClick={() => fetchNextPage()} mt={10}>
             {isFetchingNextPage ? 'Carregando...' : 'Carregar mais'}
           </Button>
         )}
