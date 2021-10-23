@@ -10,7 +10,7 @@ import { Error } from '../components/Error';
 
 export default function Home(): JSX.Element {
   const fetchPage = async ({ pageParam = null }): Promise<any> => {
-    const response = await api.get(`images`, {
+    const response = await api.get(`/api/images`, {
       params: {
         after: pageParam,
       },
@@ -27,7 +27,7 @@ export default function Home(): JSX.Element {
     fetchNextPage,
     hasNextPage,
   } = useInfiniteQuery('images', fetchPage, {
-    getNextPageParam: (lastPage, pages) => lastPage?.after,
+    getNextPageParam: (lastPage: { after: number }) => lastPage.after,
   });
 
   const formattedData = useMemo(() => {
